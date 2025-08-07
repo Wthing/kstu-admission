@@ -73,4 +73,3 @@
         $KC_PROXY_OFF = 0x00001000;
         $KC_PROXY_ON = 0x00002000;
         $KC_PROXY_AUTH = 0x00004000;
-?>
