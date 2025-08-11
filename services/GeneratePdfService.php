@@ -65,7 +65,7 @@ class GeneratePdfService
     }
 
     public function signDoc($pdf){
-        $fileErr = Yii::getAlias('@runtime').'/test/documents/1.txt';
+        $fileErr = Yii::getAlias('@runtime').'/test/error_log.txt';
 
         include Yii::getAlias('@webroot')."/utils/kalkanFlags&constants.php";
         KalkanCrypt_Init();
