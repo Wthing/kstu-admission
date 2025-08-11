@@ -20,18 +20,19 @@ class FormController extends Controller
 
     public function actionCreate()
     {
+        phpinfo();
 
 //        $userId = Yii::$app->user->id;
         $document = new Document();
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/1_Жамбеков_Арсен/form_1_1754547843.zip'));
+        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/26_b_b/b_b_26_1754894417.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
-//        $s3->commands()
-//            ->get('forms/1_Жамбеков_Арсен/form_1_1754547843.zip')
-//            ->saveAs($localPath)
-//            ->execute();
+        $s3->commands()
+            ->get('forms/26_b_b/b_b_26_1754894417.pdf')
+            ->saveAs($localPath)
+            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
 //        $s3->commands()->delete('forms/14_Жамбеков_Арсен/form_14_1753873034.zip')->execute();
