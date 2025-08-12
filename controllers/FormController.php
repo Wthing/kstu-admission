@@ -20,7 +20,9 @@ class FormController extends Controller
 
     public function actionCreate()
     {
-        phpinfo();
+//        phpinfo();
+
+//        var_dump(gethostbyname(gethostname())); die();
 
 //        $userId = Yii::$app->user->id;
         $document = new Document();
