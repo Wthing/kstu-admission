@@ -37,6 +37,7 @@ class GeneratePdfService
             'margin_bottom' => 20,
             'margin_left' => 20,
             'margin_right' => 20,
+            'tempDir' => Yii::getAlias('@runtime/mpdf'),
         ]);
         $pdf->WriteHTML($html);
 
