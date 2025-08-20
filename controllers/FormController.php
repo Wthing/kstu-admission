@@ -20,21 +20,20 @@ class FormController extends Controller
 
     public function actionCreate()
     {
-        phpinfo();
+//        phpinfo();
 
-//        var_dump(gethostbyname(gethostname())); die();
 
 //        $userId = Yii::$app->user->id;
         $document = new Document();
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/26_b_b/b_b_26_1754894417.pdf'));
+//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/26_b_b/b_b_26_1754894417.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
-        $s3->commands()
-            ->get('forms/26_b_b/b_b_26_1754894417.pdf')
-            ->saveAs($localPath)
-            ->execute();
+//        $s3->commands()
+//            ->get('forms/26_b_b/b_b_26_1754894417.pdf')
+//            ->saveAs($localPath)
+//            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
 //        $s3->commands()->delete('forms/14_Жамбеков_Арсен/form_14_1753873034.zip')->execute();
@@ -42,7 +41,6 @@ class FormController extends Controller
 //        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_12_1753870053.pdf')->execute();
 //        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_9_1753869933.pdf')->execute();
 //        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_10_1753869980.pdf')->execute();
-
         $model = new Form();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $pdfService = new GeneratePdfService();
