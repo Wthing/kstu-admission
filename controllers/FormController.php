@@ -28,16 +28,16 @@ class FormController extends Controller
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf'));
+//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
-        $s3->commands()
-            ->get('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf')
-            ->saveAs($localPath)
-            ->execute();
+//        $s3->commands()
+//            ->get('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf')
+//            ->saveAs($localPath)
+//            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
-//        $s3->commands()->delete('forms/2_a_a/a_a_2_1755668818.pdf')->execute();
-//        $s3->commands()->delete('forms/25_a_a/a_a_25_1754886007.pdf')->execute();
+//        $s3->commands()->delete('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf')->execute();
+//        $s3->commands()->delete('forms/7_Жамбеков_Арсен/signature_7_1755669914.sig')->execute();
 //        $s3->commands()->delete('forms/25_a_a/signature_25_1754886074.sig')->execute();
 //        $s3->commands()->delete('forms/26_b_b/b_b_26_1754894417.pdf')->execute();
 //        $s3->commands()->delete('forms/26_b_b/signature_26_1754894429.sig')->execute();
