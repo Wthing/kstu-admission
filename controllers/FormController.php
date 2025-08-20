@@ -28,19 +28,20 @@ class FormController extends Controller
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/26_b_b/b_b_26_1754894417.pdf'));
+        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
-//        $s3->commands()
-//            ->get('forms/26_b_b/b_b_26_1754894417.pdf')
-//            ->saveAs($localPath)
-//            ->execute();
+        $s3->commands()
+            ->get('forms/7_Жамбеков_Арсен/Жамбеков_Арсен_7_1755669863.pdf')
+            ->saveAs($localPath)
+            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
-//        $s3->commands()->delete('forms/14_Жамбеков_Арсен/form_14_1753873034.zip')->execute();
-//        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_11_1753870023.pdf')->execute();
-//        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_12_1753870053.pdf')->execute();
-//        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_9_1753869933.pdf')->execute();
-//        $s3->commands()->delete('forms/_Жамбеков_Арсен/Жамбеков_Арсен_10_1753869980.pdf')->execute();
+//        $s3->commands()->delete('forms/2_a_a/a_a_2_1755668818.pdf')->execute();
+//        $s3->commands()->delete('forms/25_a_a/a_a_25_1754886007.pdf')->execute();
+//        $s3->commands()->delete('forms/25_a_a/signature_25_1754886074.sig')->execute();
+//        $s3->commands()->delete('forms/26_b_b/b_b_26_1754894417.pdf')->execute();
+//        $s3->commands()->delete('forms/26_b_b/signature_26_1754894429.sig')->execute();
+//        $s3->commands()->delete('forms/26_b_b/signature_26_1754894487.sig')->execute();
         $model = new Form();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $pdfService = new GeneratePdfService();
@@ -458,12 +459,17 @@ class FormController extends Controller
         }
 
         try {
-            $stream = $s3->commands()->get($doc)->execute()->get('Body');
-            $pdfContent = $stream->getContents(); // ✅ Правильное использование
+            $result = $s3->commands()->get($doc)->execute();
+            if (!$result || empty($result['Body'])) {
+                throw new \Exception("Файл пустой или не найден в S3: {$doc}");
+            }
+
+            $pdfContent = (string)$result['Body']; // AWS SDK всегда приводит к string
         } catch (\Exception $e) {
             Yii::error("Ошибка при получении PDF из S3: " . $e->getMessage(), 's3');
-            throw new NotFoundHttpException("Файл PDF не найден на S3");
+            throw new NotFoundHttpException("Файл PDF не найден или пустой в S3");
         }
+
 
         $base64 = base64_encode($pdfContent);
         $xml = new \SimpleXMLElement("<?xml version='1.0' standalone='yes'?><data></data>");
