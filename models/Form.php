@@ -38,7 +38,7 @@ class Form extends \yii\db\ActiveRecord
     {
         return [
             [['patronymic'], 'default', 'value' => null],
-            [['surname', 'first_name', 'address', 'education_type', 'edu_program', 'edu_language', 'date_filled'], 'required'],
+            [['surname', 'first_name', 'address', 'education_type', 'edu_program', 'edu_language', 'date_filled'], 'required', 'message' => '',],
             [['date_filled'], 'integer'],
             [['surname', 'first_name', 'patronymic', 'address', 'education_type', 'edu_program', 'edu_language'], 'string', 'max' => 255],
         ];

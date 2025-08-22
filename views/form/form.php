@@ -34,19 +34,20 @@ $this->title = 'Заполнение заявления';
                 <?php $form = ActiveForm::begin(['options' => ['class' => 'row g-3']]); ?>
 
                 <!-- Личные данные -->
-                <div class="col-md-4">
-                    <?= $form->field($model, 'surname')->textInput(['maxlength' => true, 'placeholder' => 'Фамилия', 'class' => 'form-control shadow-sm'])->label(false) ?>
+                <div class="has-danger col-md-4">
+                    <?= $form->field($model, 'surname')->textInput(['maxlength' => true, 'placeholder' => 'Фамилия', 'class' => 'form-control'])->label(false) ?>
+                    <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
                 </div>
                 <div class="col-md-4">
-                    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true, 'placeholder' => 'Имя', 'class' => 'form-control shadow-sm'])->label(false) ?>
+                    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true, 'placeholder' => 'Имя', 'class' => 'form-control'])->label(false) ?>
                 </div>
                 <div class="col-md-4">
-                    <?= $form->field($model, 'patronymic')->textInput(['maxlength' => true, 'placeholder' => 'Отчество', 'class' => 'form-control shadow-sm'])->label(false) ?>
+                    <?= $form->field($model, 'patronymic')->textInput(['maxlength' => true, 'placeholder' => 'Отчество', 'class' => 'form-control'])->label(false) ?>
                 </div>
 
                 <!-- Адрес -->
                 <div class="col-12">
-                    <?= $form->field($model, 'address')->textarea(['rows' => 2, 'placeholder' => 'Адрес прописки', 'class' => 'form-control shadow-sm'])->label(false) ?>
+                    <?= $form->field($model, 'address')->textarea(['rows' => 2, 'placeholder' => 'Адрес прописки', 'class' => 'form-control'])->label(false) ?>
                 </div>
 
                 <!-- Тип поступления -->

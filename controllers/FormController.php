@@ -28,7 +28,7 @@ class FormController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['admin'], // Только авторизованные пользователи
+                        'roles' => ['admin', 'secretary'], // Только авторизованные пользователи
                     ],
                 ],
             ],
@@ -307,7 +307,6 @@ class FormController extends Controller
             $filesMap[$form->id] = null;
 
             if ($doc) {
-//                $userId = $doc->user_id;
                 $prefix = 'forms/' . $form->id . '_' . $form->surname . '_' . $form->first_name . '/';
 
                 try {

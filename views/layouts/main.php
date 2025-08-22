@@ -50,16 +50,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ['label' => 'Контакты', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link px-3']],
                 Yii::$app->user->isGuest
                     ? ['label' => 'Вход', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'btn btn-outline-primary ms-3 shadow-sm']]
-                    : '<li class="nav-item ms-3">'
-                    . Html::beginForm(['/site/logout'], 'post', ['class' => 'd-inline'])
-                    . Html::submitButton(
-                        'Выход (' . Html::encode(Yii::$app->user->identity->username) . ')',
-                        ['class' => 'btn btn-outline-secondary shadow-sm']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-            ]
+                    : [
+                    'label' => 'Выход (' . Html::encode(Yii::$app->user->identity->username) . ')',
+                    'url' => ['/site/logout'],
+                    'linkOptions' => [
+                        'class' => 'btn btn-outline-secondary ms-3 shadow-sm',
+                        'data-method' => 'post'
+                    ],
+                    'encode' => false
+                ],
+            ],
         ]);
+
 
         NavBar::end();
         ?>
@@ -84,19 +86,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div>
         </div>
     </main>
-
-    <footer id="footer" class="mt-auto py-3 bg-white border-top shadow-sm">
-        <div class="container text-center text-muted small">
-            <div class="row">
-                <div class="col-md-6 mb-2 mb-md-0">
-                    &copy; My Company <?= date('Y') ?>
-                </div>
-                <div class="col-md-6">
-                    <?= Yii::powered() ?>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <?php $this->endBody() ?>
     </body>

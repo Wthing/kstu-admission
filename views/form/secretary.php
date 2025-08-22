@@ -3,7 +3,7 @@
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
-$this->title = 'Заявки, ожидающие подписи секретаря';
+$this->title = 'Заявки, ожидающие подписи';
 ?>
 
     <div class="container py-4 mt-4">
@@ -43,7 +43,7 @@ $this->title = 'Заявки, ожидающие подписи секретар
         </div>
 
         <?php if (empty($forms)): ?>
-            <div class="alert alert-info shadow-sm d-flex align-items-center justify-content-center">
+            <div class="alert alert-dismissible alert-warning shadow-sm d-flex align-items-center justify-content-center">
                 <i class="bi bi-info-circle me-2"></i> Нет заявок, ожидающих подписи секретаря.
             </div>
         <?php else: ?>
