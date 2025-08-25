@@ -41,18 +41,15 @@ class FormController extends Controller
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/19_у_у/у_у_19_1756104256.pdf'));
+//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/23_у_у/у_у_23_1756104817.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
-        $s3->commands()
-            ->get('forms/19_у_у/у_у_19_1756104256.pdf')
-            ->saveAs($localPath)
-            ->execute();
+//        $s3->commands()
+//            ->get('forms/23_у_у/у_у_23_1756104817.pdf')
+//            ->saveAs($localPath)
+//            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
-//        $s3->commands()->delete('forms/12_Жамбеков_Арсен/form_12_1756098689.zip')->execute();
-//        $s3->commands()->delete('forms/13_ф_ф/ф_ф_13_1756098932.pdf')->execute();
-//        $s3->commands()->delete('forms/14_ф_ф/ф_ф_14_1756099288.pdf')->execute();
-//        $s3->commands()->delete('forms/15_ф_ф/ф_ф_15_1756099443.pdf')->execute();
+//        $s3->commands()->delete('forms/16_Жамбеков_Арсен/signature_16_1756103415.sig')->execute();
 
         $model = new Form();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
