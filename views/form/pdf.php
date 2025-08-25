@@ -167,6 +167,10 @@ $types = [
 </script>
 
 <style>
+    .navbar {
+        display: none !important;
+    }
+
     @media print {
         .no-print {
             display: none !important;
