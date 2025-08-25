@@ -185,13 +185,13 @@ $types = [
         padding: 20mm;
     }
 
-    body {
-        font-family: "Times New Roman", serif;
-        font-size: 10pt;
-        line-height: 1.5;
-        margin: 0;
-        padding: 20mm;
-    }
+    /*body {*/
+    /*    font-family: "Times New Roman", serif;*/
+    /*    font-size: 10pt;*/
+    /*    line-height: 1.5;*/
+    /*    margin: 0;*/
+    /*    padding: 20mm;*/
+    /*}*/
 
     .header-right {
         text-align: right;
@@ -246,7 +246,6 @@ $types = [
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 8px 8px 16px #c8c9cc, -8px -8px 16px #ffffff;
-            font-family: "Segoe UI", Arial, sans-serif; /* экранный нормальный шрифт */
         }
 
         .document-view.no-print {
