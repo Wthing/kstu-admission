@@ -30,47 +30,49 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <?php $this->beginBody() ?>
 
     <header id="header">
-        <?php
-        NavBar::begin([
-            'brandLabel' => Html::tag('span', Html::encode(Yii::$app->name), [
-                'class' => 'fw-bold text-primary fs-4'
-            ]),
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-2 rounded-bottom',
-                'style' => 'border-radius: 0 0 20px 20px;'
-            ]
-        ]);
-
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav ms-auto align-items-center'],
-            'items' => [
-                ['label' => 'Главная', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'nav-link px-3']],
-                ['label' => 'Контакты', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link px-3']],
-                Yii::$app->user->isGuest
-                    ? [
-                    'label' => 'Вход',
-                    'url' => ['/site/login'],
-                    'linkOptions' => [
-                        'style' => 'color: #378DFC; font-weight: 500;'
-                    ]
+        <div class="no-print"> <!-- ✅ оборачиваем navbar -->
+            <?php
+            NavBar::begin([
+                'brandLabel' => Html::tag('span', Html::encode(Yii::$app->name), [
+                    'class' => 'fw-bold text-primary fs-4'
+                ]),
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => [
+                    'class' => 'navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-2 rounded-bottom',
+                    'style' => 'border-radius: 0 0 20px 20px;'
                 ]
-                    : [
-                    'label' => 'Выход (' . Html::encode(Yii::$app->user->identity->username) . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => [
-                        'data-method' => 'post',
-                        'style' => 'color: #dc3545; font-weight: 500;'
+            ]);
+
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav ms-auto align-items-center'],
+                'items' => [
+                    ['label' => 'Главная', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'nav-link px-3']],
+                    ['label' => 'Контакты', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link px-3']],
+                    Yii::$app->user->isGuest
+                        ? [
+                        'label' => 'Вход',
+                        'url' => ['/site/login'],
+                        'linkOptions' => [
+                            'style' => 'color: #378DFC; font-weight: 500;'
+                        ]
+                    ]
+                        : [
+                        'label' => 'Выход (' . Html::encode(Yii::$app->user->identity->username) . ')',
+                        'url' => ['/site/logout'],
+                        'linkOptions' => [
+                            'data-method' => 'post',
+                            'style' => 'color: #dc3545; font-weight: 500;'
+                        ],
+                        'encode' => false
                     ],
-                    'encode' => false
                 ],
-            ],
-        ]);
+            ]);
 
-
-        NavBar::end();
-        ?>
+            NavBar::end();
+            ?>
+        </div>
     </header>
+
 
 
     <main id="main" class="flex-shrink-0 py-4" role="main">

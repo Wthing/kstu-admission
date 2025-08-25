@@ -41,12 +41,12 @@ class FormController extends Controller
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/18_у_у/у_у_18_1756104002.pdf'));
+        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/19_у_у/у_у_19_1756104256.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
-//        $s3->commands()
-//            ->get('forms/18_у_у/у_у_18_1756104002.pdf')
-//            ->saveAs($localPath)
-//            ->execute();
+        $s3->commands()
+            ->get('forms/19_у_у/у_у_19_1756104256.pdf')
+            ->saveAs($localPath)
+            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
 //        $s3->commands()->delete('forms/12_Жамбеков_Арсен/form_12_1756098689.zip')->execute();
@@ -86,7 +86,6 @@ class FormController extends Controller
 
             @unlink($tmpLocalPath);
 
-            $this->layout = false;
 
             return $this->render('pdf', [
                 'model' => $model,
