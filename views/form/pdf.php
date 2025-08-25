@@ -258,6 +258,7 @@ $types = [
             border-radius: 30px;
             font-size: 1rem;
             box-shadow: 4px 4px 10px #c8c9cc, -4px -4px 10px #ffffff;
+            font-family: "Segoe UI", Arial, sans-serif;
         }
 
         table {
