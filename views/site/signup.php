@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $model \mdm\admin\models\form\Signup */
 
 $this->title = Yii::t('app', 'Signup');
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
