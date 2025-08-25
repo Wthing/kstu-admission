@@ -167,31 +167,19 @@ $types = [
 </script>
 
 <style>
-    .navbar {
-        display: none !important;
-    }
-
     @media print {
         .no-print {
             display: none !important;
         }
     }
 
-    .pdf-wrapper {
-        font-family: "Times New Roman", serif !important;
+    body {
+        font-family: "Times New Roman", serif;
         font-size: 10pt;
         line-height: 1.5;
         margin: 0;
         padding: 20mm;
     }
-
-    /*body {*/
-    /*    font-family: "Times New Roman", serif;*/
-    /*    font-size: 10pt;*/
-    /*    line-height: 1.5;*/
-    /*    margin: 0;*/
-    /*    padding: 20mm;*/
-    /*}*/
 
     .header-right {
         text-align: right;
