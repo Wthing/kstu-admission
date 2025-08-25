@@ -21,10 +21,10 @@ $this->title = 'Успешная подпись документа';
                 <li><strong>Язык обучения:</strong> <?= Html::encode($model->edu_language) ?></li>
                 <li><strong>Дата подачи:</strong> <?= date('d.m.Y H:i', $model->date_filled) ?></li>
             </ul>
-
-            <a href="<?= Yii::$app->homeUrl ?>" class="btn btn-light mt-3">
-                Вернуться на главную
-            </a>
         </div>
+
+        <a href="<?= Yii::$app->homeUrl ?>" class="btn btn-light mt-3">
+            Вернуться на главную
+        </a>
     </div>
 </div>

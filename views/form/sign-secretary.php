@@ -186,33 +186,8 @@ $this->title = 'Информация о заявлении';
         </div>
     </div>
 
-<!--    <div class="card border-info shadow-sm mb-4">-->
-<!--        <div class="card-header bg-info text-white">-->
-<!--            <h5 class="mb-0">Информация о документе</h5>-->
-<!--        </div>-->
-<!--        <div class="card-body">-->
-<!--            <ul class="list-group list-group-flush">-->
-<!--                <li class="list-group-item">-->
-<!--                    <strong>ФИО:</strong> --><?php //= Html::encode("{$model->surname} {$model->first_name} {$model->patronymic}") ?>
-<!--                </li>-->
-<!--                <li class="list-group-item">-->
-<!--                    <strong>Программа:</strong> --><?php //= Html::encode($model->edu_program) ?>
-<!--                </li>-->
-<!--                <li class="list-group-item">-->
-<!--                    <strong>Язык обучения:</strong> --><?php //= Html::encode($model->edu_language) ?>
-<!--                </li>-->
-<!--                <li class="list-group-item">-->
-<!--                    <strong>Дата подачи:</strong> --><?php //= date('d.m.Y H:i', $model->date_filled) ?>
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--        <div class="card-footer text-muted small">-->
-<!--            Дата генерации PDF: --><?php //= date('d.m.Y H:i') ?>
-<!--        </div>-->
-<!--    </div>-->
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
 
-    <!-- Подпись документа -->
-    <div class="document-view text-center no-print">
         <?php $form = ActiveForm::begin(['id' => 'signForm']); ?>
         <textarea hidden id="dataToSign"><?= Html::encode($pdfData) ?></textarea>
         <input type="hidden" id="formId" value="<?= $model->id ?>">
@@ -223,10 +198,7 @@ $this->title = 'Информация о заявлении';
                 onclick="clickSign()">
             <i class="bi bi-pen-fill me-2"></i> Подписать документ
         </button>
-    </div>
 
-    <!-- Кнопка возврата -->
-    <div class="text-center mt-5">
         <a href="<?= Yii::$app->homeUrl ?>"
            class="btn btn-lg btn-outline-secondary rounded-pill px-4 py-2 shadow-sm">
             <i class="bi bi-house-door-fill me-2"></i> Вернуться на главную
