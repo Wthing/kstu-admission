@@ -21,20 +21,21 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout'],
+                'only' => ['logout', 'signup'], // добавили signup
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['@'], // все авторизованные
                     ],
                     [
                         'actions' => ['signup'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin'], // только админ
                     ],
                 ],
             ],
+
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
