@@ -125,7 +125,7 @@ $types = [
                 var responseStatus = response['status'];
                 var responseBody = response['body'];
 
-                if (responseStatus === true && responseBody.hasOwnProperty('result')) {
+                if (responseStatus != null && responseBody.hasOwnProperty('result')) {
                     const signed = response.body.result;
 
                     const formData = new FormData();
