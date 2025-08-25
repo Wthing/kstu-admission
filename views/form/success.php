@@ -6,7 +6,7 @@ use yii\helpers\Html;
 $this->title = 'Успешная подпись документа';
 ?>
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+<div class="d-flex justify-content-center align-items-center">
     <div class="card text-white bg-success mb-3" style="max-width: 30rem;">
         <div class="card-header">Документ подписан</div>
         <div class="card-body">
@@ -22,9 +22,5 @@ $this->title = 'Успешная подпись документа';
                 <li><strong>Дата подачи:</strong> <?= date('d.m.Y H:i', $model->date_filled) ?></li>
             </ul>
         </div>
-
-        <a href="<?= Yii::$app->homeUrl ?>" class="btn btn-light mt-3">
-            Вернуться на главную
-        </a>
     </div>
 </div>
