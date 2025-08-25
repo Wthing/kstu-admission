@@ -155,41 +155,59 @@ $this->title = 'Информация о заявлении';
 
 </script>
 
-<div class="container py-5">
+<div class="container py-5" style="max-width: 850px;">
 
-    <div class="card shadow-sm mt-4">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <h1 class="display-6 text-primary fw-bold">Информация о заявлении</h1>
+        <p class="text-muted">Проверьте данные перед подписанием документа</p>
+    </div>
+
+    <!-- Карточка с информацией -->
+    <div class="card border-info shadow-sm mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">Информация о документе</h5>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">Информация о документе</h5>
-            <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item"><strong>ФИО:</strong> <?= Html::encode("{$model->surname} {$model->first_name} {$model->patronymic}") ?></li>
-                <li class="list-group-item"><strong>Программа:</strong> <?= Html::encode($model->edu_program) ?></li>
-                <li class="list-group-item"><strong>Язык обучения:</strong> <?= Html::encode($model->edu_language) ?></li>
-                <li class="list-group-item"><strong>Дата подачи:</strong> <?= date('d.m.Y H:i', $model->date_filled) ?></li>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>ФИО:</strong> <?= Html::encode("{$model->surname} {$model->first_name} {$model->patronymic}") ?>
+                </li>
+                <li class="list-group-item">
+                    <strong>Программа:</strong> <?= Html::encode($model->edu_program) ?>
+                </li>
+                <li class="list-group-item">
+                    <strong>Язык обучения:</strong> <?= Html::encode($model->edu_language) ?>
+                </li>
+                <li class="list-group-item">
+                    <strong>Дата подачи:</strong> <?= date('d.m.Y H:i', $model->date_filled) ?>
+                </li>
             </ul>
+        </div>
+        <div class="card-footer text-muted small">
+            Дата генерации PDF: <?= date('d.m.Y H:i') ?>
         </div>
     </div>
 
-    <div class="document-view no-print mt-4">
+    <!-- Подпись документа -->
+    <div class="document-view text-center no-print">
         <?php $form = ActiveForm::begin(['id' => 'signForm']); ?>
-
-        <!-- Скрытые данные -->
-        <textarea type="text" hidden id="dataToSign" rows="3"><?= Html::encode($pdfData) ?></textarea>
+        <textarea hidden id="dataToSign"><?= Html::encode($pdfData) ?></textarea>
         <input type="hidden" id="formId" value="<?= $model->id ?>">
-
         <?php ActiveForm::end(); ?>
 
-        <!-- Кнопка подписи -->
         <button type="button"
-                class="btn btn-lg btn-success shadow-sm px-4 py-2 mt-3"
-                onclick="clickSign()"
-        >
+                class="btn btn-lg btn-success shadow px-4 py-2 rounded-pill"
+                onclick="clickSign()">
             <i class="bi bi-pen-fill me-2"></i> Подписать документ
         </button>
     </div>
 
+    <!-- Кнопка возврата -->
     <div class="text-center mt-5">
-        <a href="<?= Yii::$app->homeUrl ?>" class="btn btn-lg btn-secondary">
-            <i class="bi bi-house-door-fill me-2"></i>Вернуться на главную
+        <a href="<?= Yii::$app->homeUrl ?>"
+           class="btn btn-lg btn-outline-secondary rounded-pill px-4 py-2 shadow-sm">
+            <i class="bi bi-house-door-fill me-2"></i> Вернуться на главную
         </a>
     </div>
 

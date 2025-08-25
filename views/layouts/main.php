@@ -48,13 +48,19 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ['label' => 'Главная', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'nav-link px-3']],
                 ['label' => 'Контакты', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link px-3']],
                 Yii::$app->user->isGuest
-                    ? ['label' => 'Вход', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'btn btn-outline-primary ms-3 shadow-sm']]
+                    ? [
+                    'label' => 'Вход',
+                    'url' => ['/site/login'],
+                    'linkOptions' => [
+                        'style' => 'color: #378DFC; font-weight: 500;'
+                    ]
+                ]
                     : [
                     'label' => 'Выход (' . Html::encode(Yii::$app->user->identity->username) . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => [
-                        'class' => 'btn btn-outline-secondary ms-3 shadow-sm',
-                        'data-method' => 'post'
+                        'data-method' => 'post',
+                        'style' => 'color: #dc3545; font-weight: 500;'
                     ],
                     'encode' => false
                 ],
