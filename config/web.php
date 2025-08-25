@@ -46,6 +46,11 @@ $config = [
 
     'components' => [
 
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'timeZone' => 'Asia/Almaty', // например, Казахстан
+        ],
+
         'as access' => [
             'class' => 'mdm\admin\components\AccessControl',
             'allowActions' => [
@@ -109,6 +114,7 @@ $config = [
             ],
         ],
     ],
+    'timeZone' => 'Asia/Almaty',
     'params' => $params,
 ];
 
