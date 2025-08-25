@@ -46,7 +46,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             'options' => ['class' => 'navbar-nav ms-auto align-items-center'],
             'items' => [
                 ['label' => 'Главная', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'nav-link px-3']],
-                ['label' => 'О нас', 'url' => ['/site/about'], 'linkOptions' => ['class' => 'nav-link px-3']],
                 ['label' => 'Контакты', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link px-3']],
                 Yii::$app->user->isGuest
                     ? ['label' => 'Вход', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'btn btn-outline-primary ms-3 shadow-sm']]

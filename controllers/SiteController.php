@@ -130,14 +130,4 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }
