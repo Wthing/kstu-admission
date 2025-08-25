@@ -41,18 +41,18 @@ class FormController extends Controller
         $s3 = Yii::$app->s3;
 
         $prefix = 'forms/';
-//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/12_Жамбеков_Арсен/Жамбеков_Арсен_12_1755753008.pdf'));
+//        $localPath = Yii::getAlias('@runtime/tmp/' . basename('forms/18_у_у/у_у_18_1756104002.pdf'));
         $result = $s3->commands()->list($prefix)->execute();
 //        $s3->commands()
-//            ->get('forms/12_Жамбеков_Арсен/Жамбеков_Арсен_12_1755753008.pdf')
+//            ->get('forms/18_у_у/у_у_18_1756104002.pdf')
 //            ->saveAs($localPath)
 //            ->execute();
         $files = $result['Contents'] ?? [];
         Yii::info($files);
-        $s3->commands()->delete('forms/12_Жамбеков_Арсен/form_12_1756098689.zip')->execute();
-        $s3->commands()->delete('forms/13_ф_ф/ф_ф_13_1756098932.pdf')->execute();
-        $s3->commands()->delete('forms/14_ф_ф/ф_ф_14_1756099288.pdf')->execute();
-        $s3->commands()->delete('forms/15_ф_ф/ф_ф_15_1756099443.pdf')->execute();
+//        $s3->commands()->delete('forms/12_Жамбеков_Арсен/form_12_1756098689.zip')->execute();
+//        $s3->commands()->delete('forms/13_ф_ф/ф_ф_13_1756098932.pdf')->execute();
+//        $s3->commands()->delete('forms/14_ф_ф/ф_ф_14_1756099288.pdf')->execute();
+//        $s3->commands()->delete('forms/15_ф_ф/ф_ф_15_1756099443.pdf')->execute();
 
         $model = new Form();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -85,6 +85,8 @@ class FormController extends Controller
             $document->save();
 
             @unlink($tmpLocalPath);
+
+            $this->layout = false;
 
             return $this->render('pdf', [
                 'model' => $model,
