@@ -167,7 +167,7 @@ $types = [
 </script>
 
 <style>
-    .no-print {
+    .no-print-layout {
         display: none !important;
     }
 
