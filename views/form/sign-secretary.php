@@ -163,12 +163,12 @@ $this->title = 'Информация о заявлении';
         <p class="text-muted">Проверьте данные перед подписанием документа</p>
     </div>
 
-    <!-- Карточка с информацией -->
-    <div class="card border-info shadow-sm mb-4">
-        <div class="card-header bg-info text-white">
-            <h5 class="mb-0">Информация о документе</h5>
+    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+            Дата генерации PDF: <?= date('d.m.Y H:i') ?>
         </div>
         <div class="card-body">
+            <h4 class="card-title">Информация о документе</h4>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <strong>ФИО:</strong> <?= Html::encode("{$model->surname} {$model->first_name} {$model->patronymic}") ?>
@@ -184,10 +184,32 @@ $this->title = 'Информация о заявлении';
                 </li>
             </ul>
         </div>
-        <div class="card-footer text-muted small">
-            Дата генерации PDF: <?= date('d.m.Y H:i') ?>
-        </div>
     </div>
+
+<!--    <div class="card border-info shadow-sm mb-4">-->
+<!--        <div class="card-header bg-info text-white">-->
+<!--            <h5 class="mb-0">Информация о документе</h5>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <ul class="list-group list-group-flush">-->
+<!--                <li class="list-group-item">-->
+<!--                    <strong>ФИО:</strong> --><?php //= Html::encode("{$model->surname} {$model->first_name} {$model->patronymic}") ?>
+<!--                </li>-->
+<!--                <li class="list-group-item">-->
+<!--                    <strong>Программа:</strong> --><?php //= Html::encode($model->edu_program) ?>
+<!--                </li>-->
+<!--                <li class="list-group-item">-->
+<!--                    <strong>Язык обучения:</strong> --><?php //= Html::encode($model->edu_language) ?>
+<!--                </li>-->
+<!--                <li class="list-group-item">-->
+<!--                    <strong>Дата подачи:</strong> --><?php //= date('d.m.Y H:i', $model->date_filled) ?>
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="card-footer text-muted small">-->
+<!--            Дата генерации PDF: --><?php //= date('d.m.Y H:i') ?>
+<!--        </div>-->
+<!--    </div>-->
 
     <!-- Подпись документа -->
     <div class="document-view text-center no-print">
