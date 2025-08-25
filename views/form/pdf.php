@@ -167,6 +167,10 @@ $types = [
 </script>
 
 <style>
+    /*.no-print {*/
+    /*    display: none !important;*/
+    /*}*/
+
     @media print {
         .no-print {
             display: none !important;
