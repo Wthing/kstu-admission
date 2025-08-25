@@ -163,23 +163,23 @@ $this->title = 'Информация о заявлении';
         <p class="text-muted">Проверьте данные перед подписанием документа</p>
     </div>
 
-    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+    <div class="card text-white bg-info mb-3">
         <div class="card-header">
             Дата генерации PDF: <?= date('d.m.Y H:i') ?>
         </div>
         <div class="card-body">
             <h4 class="card-title">Информация о документе</h4>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
+            <ul>
+                <li>
                     <strong>ФИО:</strong> <?= Html::encode("{$model->surname} {$model->first_name} {$model->patronymic}") ?>
                 </li>
-                <li class="list-group-item">
+                <li>
                     <strong>Программа:</strong> <?= Html::encode($model->edu_program) ?>
                 </li>
-                <li class="list-group-item">
+                <li>
                     <strong>Язык обучения:</strong> <?= Html::encode($model->edu_language) ?>
                 </li>
-                <li class="list-group-item">
+                <li>
                     <strong>Дата подачи:</strong> <?= date('d.m.Y H:i', $model->date_filled) ?>
                 </li>
             </ul>
