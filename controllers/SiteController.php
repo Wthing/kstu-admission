@@ -21,21 +21,22 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'signup'], // добавили signup
+                'only' => ['signup', 'logout'], // перечисляем действия, к которым применяем правила
                 'rules' => [
+                    // logout доступен всем авторизованным
                     [
                         'actions' => ['logout'],
                         'allow' => true,
-                        'roles' => ['@'], // все авторизованные
+                        'roles' => ['@'],
                     ],
+                    // signup доступен только admin
                     [
                         'actions' => ['signup'],
                         'allow' => true,
-                        'roles' => ['admin'], // только админ
+                        'roles' => ['admin'], // нужно настроить RBAC или проверку роли
                     ],
                 ],
             ],
-
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
@@ -44,6 +45,7 @@ class SiteController extends Controller
             ],
         ];
     }
+
 
     /**
      * {@inheritdoc}
